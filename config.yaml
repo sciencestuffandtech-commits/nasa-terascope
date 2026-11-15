@@ -1,0 +1,90 @@
+period: {start: "2001-01", end: "2025-12"}
+min_record_years_tier1: 20
+alpha: 0.05
+rate_unit_years: 10
+grid_cap_cells: 20000
+block_average_min_valid_fraction: 0.50
+
+library: {version: "1.4.3"}
+completeness: {min_valid_year_fraction_per_month: 0.80, max_consecutive_missing_years: 3}
+tie_rule: {max_identical_fraction: 0.50}
+fdr: {q: 0.10, method: fdr_bh}
+stability: {window_years: 15, step_years: 1, robust_agreement: 0.80, probable_agreement: 0.60}
+bootstrap: {B: 1000, block_length_primary: 3, block_length_sensitivity: [1, 2], ci: 0.95, seed: 20261114}
+
+products:
+  t2m:
+    enabled: true
+    name: "Near-surface temperature anomaly"
+    dataset: "NASA GISS GISTEMP v4 gridded (2 degree), monthly"
+    file: data/raw/gistemp1200_GHCNv4_ERSSTv5.nc
+    variable: tempanomaly
+    units: "°C"
+    valid_range: [-100, 100]
+    version: "GISTEMP v4, accessed 2026-11-14"
+    doi: "Lenssen et al. (2024), doi:10.1029/2023JD040179"
+    url: https://data.giss.nasa.gov/gistemp/data_v4.html
+    discontinuity_registry: null
+    limitations:
+      - "Station + sea-surface-temperature analysis, not a satellite product."
+      - "Already an anomaly product (display only; trend results are baseline-independent)."
+  precip:
+    enabled: true
+    name: "Precipitation"
+    dataset: "GPCP Monthly Satellite-Gauge Precipitation, Level 3, 0.5 degree, V3.3 (GPCPMON)"
+    files: data/raw/gpcp/GPCPMON_L3_*_V3.3.nc4
+    variable: sat_gauge_precip
+    units: "mm/day"
+    valid_range: [0, 100]
+    version: "3.3"
+    doi: "10.5067/MEASURES/GPCP/DATA306"
+    url: https://disc.gsfc.nasa.gov/datasets/GPCPMON_3.3/summary
+    discontinuity_registry: "VERIFY: write one line, or 'none documented in [source, date]'"
+    limitations:
+      - "Satellite-gauge merged product. Land values depend on gauge analyses; hyper-arid cells are mostly zero (tie rule applies)."
+  soil:
+    enabled: true
+    name: "Soil moisture (0-10 cm)"
+    dataset: "GLDAS Noah Land Surface Model L4 monthly 0.25 degree V2.1 (NASA Giovanni soil moisture)"
+    files: data/raw/soil/soil_GLDAS_NOAH025_M.A*.nc4
+    variable: SoilMoi0_10cm_inst
+    units: "kg m-2"
+    valid_range: [0, 200]
+    version: "2.1"
+    doi: "10.5067/SXAVCZFAQLNO"
+    url: https://disc.gsfc.nasa.gov/datasets/GLDAS_NOAH025_M_2.1/summary
+    discontinuity_registry: "none documented in GLDAS-2.1 product page"
+    limitations:
+      - "Model-based land surface product (Noah LSM), not a direct satellite observation. Land cells only."
+
+simulation:
+  n_years: 25
+  n_sims: 1000
+  base_seed: 20261114
+  cycle_amplitude: 10.0
+  noise_sd: 1.0
+  annual_component_sd: 0.5
+  fp_pass_window: [0.035, 0.065]
+  fp_report_threshold: 0.075
+  coverage_min: 0.92
+  scenario_order: [S0, S1, S2, S3, S4, T1, T2, T3]
+  scenarios:
+    S0: {desc: "independent noise, no trend", boot: true}
+    S1: {desc: "monthly AR(1) phi=0.3, no trend", phi: 0.3, boot: true}
+    S2: {desc: "monthly AR(1) phi=0.6, no trend", phi: 0.6}
+    S3: {desc: "independent + annual-level AR(1) rho=0.4, no trend", annual_rho: 0.4}
+    S4: {desc: "independent, 15% missing completely at random", missing_fraction: 0.15}
+    T1: {desc: "S1 noise + slope 0.012/yr (low power)", phi: 0.3, slope_per_year: 0.012, boot: true}
+    T2: {desc: "S1 noise + slope 0.022/yr (medium power)", phi: 0.3, slope_per_year: 0.022, boot: true}
+    T3: {desc: "S1 noise + slope 0.035/yr (high power)", phi: 0.3, slope_per_year: 0.035, boot: true}
+
+bvar:
+  lags: 3
+  lambda_tightness: 0.2
+  lag_decay: 1.0
+  n_draws: 300
+  credible_level: 0.90
+  forecast_test_months: 60
+  seed: 20261115
+  hypothesis_soil: "Cumulative lagged effect of soil moisture on temperature is negative (land cells)"
+  hypothesis: "Cumulative lagged effect of precipitation on temperature is negative (land cells)"
