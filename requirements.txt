@@ -1,0 +1,13 @@
+numpy
+pandas
+pyyaml
+xarray
+netCDF4
+scipy
+statsmodels
+pymannkendall
+joblib
+fastapi
+uvicorn
+pytest
+earthaccess
