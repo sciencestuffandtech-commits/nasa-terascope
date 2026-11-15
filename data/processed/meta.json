@@ -1,0 +1,126 @@
+{
+ "variables": [
+  {
+   "id": "t2m",
+   "name": "Near-surface temperature anomaly",
+   "units": "\u00b0C",
+   "dataset": "NASA GISS GISTEMP v4 gridded (2 degree), monthly",
+   "version": "GISTEMP v4, accessed 2026-11-14",
+   "doi": "Lenssen et al. (2024), doi:10.1029/2023JD040179",
+   "url": "https://data.giss.nasa.gov/gistemp/data_v4.html",
+   "grid": "2\u00b0",
+   "native_shape": [
+    90,
+    180
+   ],
+   "block_factor": 1,
+   "period": [
+    "2001-01",
+    "2025-12"
+   ],
+   "tier": 1,
+   "limitations": [
+    "Station + sea-surface-temperature analysis, not a satellite product.",
+    "Already an anomaly product (display only; trend results are baseline-independent).",
+    "44 cells with missing months were excluded: the corrected seasonal test is unreliable with gaps."
+   ],
+   "discontinuities": [],
+   "source_files": 1,
+   "summary": {
+    "cells": 16200,
+    "eligible": 15882,
+    "insufficient_data": 318,
+    "insufficient_variability": 0
+   },
+   "n_incomplete_excluded": 44,
+   "n_tested": 15882,
+   "n_significant_raw": 9512,
+   "n_significant_fdr": 9855,
+   "n_significant_by": 5410,
+   "fdr_q": 0.1,
+   "seconds": 114.5,
+   "variance_estimator": "pymannkendall 1.4.3 correlated_seasonal_test"
+  },
+  {
+   "id": "precip",
+   "name": "Precipitation",
+   "units": "mm/day",
+   "dataset": "GPCP Monthly Satellite-Gauge Precipitation, Level 3, 0.5 degree, V3.3 (GPCPMON)",
+   "version": "3.3",
+   "doi": "10.5067/MEASURES/GPCP/DATA306",
+   "url": null,
+   "grid": "2\u00b0",
+   "native_shape": [
+    360,
+    720
+   ],
+   "block_factor": 4,
+   "period": [
+    "2001-01",
+    "2025-12"
+   ],
+   "tier": 1,
+   "limitations": [
+    "Block-averaged once from 360x720 to 90x180 (area-weighted) to respect the grid cap."
+   ],
+   "discontinuities": [],
+   "source_files": 300,
+   "summary": {
+    "cells": 16200,
+    "eligible": 16200,
+    "insufficient_data": 0,
+    "insufficient_variability": 0
+   },
+   "n_incomplete_excluded": 0,
+   "n_tested": 16200,
+   "n_significant_raw": 3319,
+   "n_significant_fdr": 1143,
+   "n_significant_by": 0,
+   "fdr_q": 0.1,
+   "seconds": 511.2,
+   "variance_estimator": "pymannkendall 1.4.3 correlated_seasonal_test"
+  },
+  {
+   "id": "soil",
+   "name": "Soil moisture (0-10 cm)",
+   "units": "kg m-2",
+   "dataset": "GLDAS Noah Land Surface Model L4 monthly 0.25 degree V2.1 (NASA Giovanni soil moisture)",
+   "version": "2.1",
+   "doi": "10.5067/SXAVCZFAQLNO",
+   "url": "https://disc.gsfc.nasa.gov/datasets/GLDAS_NOAH025_M_2.1/summary",
+   "grid": "2\u00b0",
+   "native_shape": [
+    600,
+    1440
+   ],
+   "block_factor": 8,
+   "period": [
+    "2001-01",
+    "2025-12"
+   ],
+   "tier": 1,
+   "limitations": [
+    "Model-based land surface product (Noah LSM), not a direct satellite observation. Land cells only.",
+    "Block-averaged once from 600x1440 to 75x180 (area-weighted) to respect the grid cap."
+   ],
+   "discontinuities": [
+    "none documented in GLDAS-2.1 product page"
+   ],
+   "source_files": 312,
+   "summary": {
+    "cells": 13500,
+    "eligible": 3692,
+    "insufficient_data": 9701,
+    "insufficient_variability": 107
+   },
+   "n_incomplete_excluded": 0,
+   "n_tested": 3692,
+   "n_significant_raw": 1647,
+   "n_significant_fdr": 1576,
+   "n_significant_by": 560,
+   "fdr_q": 0.1,
+   "seconds": 138.6,
+   "variance_estimator": "pymannkendall 1.4.3 correlated_seasonal_test"
+  }
+ ]
+}

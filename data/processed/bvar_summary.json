@@ -1,0 +1,233 @@
+{
+ "hypothesis": "Cumulative lagged effect of precipitation on temperature is negative (land cells)",
+ "config": {
+  "lags": 3,
+  "lambda_tightness": 0.2,
+  "lag_decay": 1.0,
+  "n_draws": 300,
+  "credible_level": 0.9,
+  "forecast_test_months": 60,
+  "seed": 20261115,
+  "grid_matching": "nearest_centre",
+  "scale_by_month": true,
+  "calibration": {
+   "n_cells": 300,
+   "n_shifts": 3,
+   "pass_window": [
+    0.06,
+    0.14
+   ]
+  },
+  "min_shift_years": 2
+ },
+ "input_info": {
+  "n_status0_t": 15882,
+  "n_status0_p": 16200,
+  "n_status0_both": 15882,
+  "n_eligible": 15882
+ },
+ "residual_check": {
+  "n_checked": 100,
+  "max_abs_residual_sen_slope": 1.8503717628539684e-17
+ },
+ "calibration": {
+  "n_cells": 300,
+  "n_shifts": 3,
+  "rate_PtoT_excl0": 0.08,
+  "rate_TtoP_excl0": 0.08333333333333333,
+  "per_replicate": [
+   {
+    "PtoT": 0.06333333333333334,
+    "TtoP": 0.07
+   },
+   {
+    "PtoT": 0.08666666666666667,
+    "TtoP": 0.1
+   },
+   {
+    "PtoT": 0.09,
+    "TtoP": 0.08
+   }
+  ],
+  "expected": 0.1,
+  "pass_window": [
+   0.06,
+   0.14
+  ],
+  "passed": true
+ },
+ "summary": {
+  "all_cells": {
+   "n": 15882,
+   "frac_PtoT_excl0": 0.19053015992947991,
+   "frac_PtoT_negative": 0.15161818410779498,
+   "frac_PtoT_positive": 0.03891197582168492,
+   "frac_TtoP_excl0": 0.29020274524619066,
+   "frac_TtoP_negative": 0.03633043697267347,
+   "frac_TtoP_positive": 0.2538723082735172,
+   "null_expectation_two_sided": 0.1,
+   "null_expectation_each_side": 0.05,
+   "median_PtoT": -0.02896677931510796,
+   "median_forecast_gain_T": -0.00219347678295434,
+   "frac_forecast_gain_positive": 0.4061831003651933
+  },
+  "note": "No land mask (pip install global-land-mask). H-TP is stated for land cells: report land-only when available.",
+  "field_null": {
+   "replicates": [
+    {
+     "shift_years": 22,
+     "frac_PtoT_excl0": 0.10609495025815388,
+     "frac_PtoT_negative": 0.06762372497166604
+    },
+    {
+     "shift_years": 2,
+     "frac_PtoT_excl0": 0.08260924316836671,
+     "frac_PtoT_negative": 0.03513411409142425
+    },
+    {
+     "shift_years": 4,
+     "frac_PtoT_excl0": 0.07310162448054401,
+     "frac_PtoT_negative": 0.031230323636821558
+    },
+    {
+     "shift_years": 20,
+     "frac_PtoT_excl0": 0.07070897871804559,
+     "frac_PtoT_negative": 0.021030096965117744
+    },
+    {
+     "shift_years": 19,
+     "frac_PtoT_excl0": 0.07732023674600176,
+     "frac_PtoT_negative": 0.03236368215589976
+    },
+    {
+     "shift_years": 13,
+     "frac_PtoT_excl0": 0.06995340637199345,
+     "frac_PtoT_negative": 0.02915249968517819
+    },
+    {
+     "shift_years": 9,
+     "frac_PtoT_excl0": 0.1320362674726105,
+     "frac_PtoT_negative": 0.05030852537463795
+    },
+    {
+     "shift_years": 18,
+     "frac_PtoT_excl0": 0.10030222893842085,
+     "frac_PtoT_negative": 0.04722327162825841
+    },
+    {
+     "shift_years": 11,
+     "frac_PtoT_excl0": 0.07511648407001636,
+     "frac_PtoT_negative": 0.03563782898879234
+    },
+    {
+     "shift_years": 17,
+     "frac_PtoT_excl0": 0.09652436720816018,
+     "frac_PtoT_negative": 0.06038282332199975
+    },
+    {
+     "shift_years": 15,
+     "frac_PtoT_excl0": 0.09564286613776603,
+     "frac_PtoT_negative": 0.03198589598287369
+    },
+    {
+     "shift_years": 5,
+     "frac_PtoT_excl0": 0.0685681904042312,
+     "frac_PtoT_negative": 0.037211938043067626
+    },
+    {
+     "shift_years": 16,
+     "frac_PtoT_excl0": 0.07794988036771187,
+     "frac_PtoT_negative": 0.038345296562145824
+    },
+    {
+     "shift_years": 12,
+     "frac_PtoT_excl0": 0.08273517189270872,
+     "frac_PtoT_negative": 0.049678881752927846
+    },
+    {
+     "shift_years": 14,
+     "frac_PtoT_excl0": 0.08298702934139277,
+     "frac_PtoT_negative": 0.03387482684800403
+    },
+    {
+     "shift_years": 21,
+     "frac_PtoT_excl0": 0.07316458884271503,
+     "frac_PtoT_negative": 0.03444150610754313
+    },
+    {
+     "shift_years": 8,
+     "frac_PtoT_excl0": 0.11276917264828107,
+     "frac_PtoT_negative": 0.029089535323007176
+    },
+    {
+     "shift_years": 23,
+     "frac_PtoT_excl0": 0.09375393527263569,
+     "frac_PtoT_negative": 0.054590102002266716
+    },
+    {
+     "shift_years": 7,
+     "frac_PtoT_excl0": 0.0758720564160685,
+     "frac_PtoT_negative": 0.03085253746379549
+    },
+    {
+     "shift_years": 6,
+     "frac_PtoT_excl0": 0.08053141921672334,
+     "frac_PtoT_negative": 0.052575242412794355
+    }
+   ],
+   "observed_frac_PtoT_excl0": 0.19053015992947991,
+   "n_null_reps_at_or_above_observed": 0,
+   "note": "Null built on all eligible cells; compare with the matching observed set."
+  }
+ },
+ "seconds": 1513.2,
+ "versions": {
+  "numpy": "2.5.4"
+ },
+ "land_split_from_saved": {
+  "all": {
+   "n": 15882,
+   "frac_PtoT_excl0": 0.19053015992947991,
+   "frac_PtoT_negative": 0.15161818410779498,
+   "frac_PtoT_positive": 0.03891197582168492,
+   "frac_TtoP_excl0": 0.29020274524619066,
+   "frac_TtoP_negative": 0.03633043697267347,
+   "frac_TtoP_positive": 0.2538723082735172,
+   "null_expectation_two_sided": 0.1,
+   "null_expectation_each_side": 0.05,
+   "median_PtoT": -0.02896677931510796,
+   "median_forecast_gain_T": -0.00219347678295434,
+   "frac_forecast_gain_positive": 0.4061831003651933
+  },
+  "land": {
+   "n": 5367,
+   "frac_PtoT_excl0": 0.17011365753679897,
+   "frac_PtoT_negative": 0.14589155953046395,
+   "frac_PtoT_positive": 0.02422209800633501,
+   "frac_TtoP_excl0": 0.12968138624930128,
+   "frac_TtoP_negative": 0.052729644121483135,
+   "frac_TtoP_positive": 0.07695174212781815,
+   "null_expectation_two_sided": 0.1,
+   "null_expectation_each_side": 0.05,
+   "median_PtoT": -0.029832497245356873,
+   "median_forecast_gain_T": -0.0029075532419633454,
+   "frac_forecast_gain_positive": 0.36668529904974845
+  },
+  "ocean": {
+   "n": 10515,
+   "frac_PtoT_excl0": 0.2009510223490252,
+   "frac_PtoT_negative": 0.15454113171659534,
+   "frac_PtoT_positive": 0.04640989063242986,
+   "frac_TtoP_excl0": 0.37213504517356155,
+   "frac_TtoP_negative": 0.027960057061340943,
+   "frac_TtoP_positive": 0.34417498811222064,
+   "null_expectation_two_sided": 0.1,
+   "null_expectation_each_side": 0.05,
+   "median_PtoT": -0.02860817992063694,
+   "median_forecast_gain_T": -0.0018031561572304788,
+   "frac_forecast_gain_positive": 0.4263433190679981
+  },
+  "n_land": 5367,
+  "n_ocean": 10515
+ }
+}

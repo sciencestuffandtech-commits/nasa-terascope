@@ -1,0 +1,229 @@
+{
+  "config_simulation": {
+    "n_years": 25,
+    "n_sims": 1000,
+    "base_seed": 20261114,
+    "cycle_amplitude": 10.0,
+    "noise_sd": 1.0,
+    "annual_component_sd": 0.5,
+    "fp_pass_window": [
+      0.035,
+      0.065
+    ],
+    "fp_report_threshold": 0.075,
+    "coverage_min": 0.92,
+    "scenario_order": [
+      "S0",
+      "S1",
+      "S2",
+      "S3",
+      "S4",
+      "T1",
+      "T2",
+      "T3"
+    ],
+    "scenarios": {
+      "S0": {
+        "desc": "independent noise, no trend",
+        "boot": true
+      },
+      "S1": {
+        "desc": "monthly AR(1) phi=0.3, no trend",
+        "phi": 0.3,
+        "boot": true
+      },
+      "S2": {
+        "desc": "monthly AR(1) phi=0.6, no trend",
+        "phi": 0.6
+      },
+      "S3": {
+        "desc": "independent + annual-level AR(1) rho=0.4, no trend",
+        "annual_rho": 0.4
+      },
+      "S4": {
+        "desc": "independent, 15% missing completely at random",
+        "missing_fraction": 0.15
+      },
+      "T1": {
+        "desc": "S1 noise + slope 0.012/yr (low power)",
+        "phi": 0.3,
+        "slope_per_year": 0.012,
+        "boot": true
+      },
+      "T2": {
+        "desc": "S1 noise + slope 0.022/yr (medium power)",
+        "phi": 0.3,
+        "slope_per_year": 0.022,
+        "boot": true
+      },
+      "T3": {
+        "desc": "S1 noise + slope 0.035/yr (high power)",
+        "phi": 0.3,
+        "slope_per_year": 0.035,
+        "boot": true
+      }
+    }
+  },
+  "bootstrap": {
+    "B": 1000,
+    "block_length_primary": 3,
+    "block_length_sensitivity": [
+      1,
+      2
+    ],
+    "ci": 0.95,
+    "seed": 20261114
+  },
+  "alpha": 0.05,
+  "n_sims_run": 1000,
+  "results": {
+    "S0": {
+      "n_sims": 1000,
+      "true_slope_per_year": 0.0,
+      "rate_plain": 0.049,
+      "rate_corr": 0.042,
+      "cov_ci_plain": 0.951,
+      "cov_ci_corr": 0.958,
+      "cov_boot_L3": 0.91,
+      "cov_boot_L1": 0.948,
+      "cov_boot_L2": 0.931,
+      "bias_per_year": -0.00041452604911627,
+      "rmse_per_year": 0.008402662128281462,
+      "verdicts": [
+        "rate_corr=0.042 PASS (window 0.035-0.065)",
+        "rate_plain=0.049 PASS (window 0.035-0.065)",
+        "cov_ci_plain=0.951 PASS (min 0.92)",
+        "cov_ci_corr=0.958 PASS (min 0.92)",
+        "cov_boot_L3=0.910 FAIL (min 0.92)",
+        "cov_boot_L1=0.948 PASS (min 0.92)",
+        "cov_boot_L2=0.931 PASS (min 0.92)"
+      ]
+    },
+    "S1": {
+      "n_sims": 1000,
+      "true_slope_per_year": 0.0,
+      "rate_plain": 0.136,
+      "rate_corr": 0.051,
+      "cov_ci_plain": 0.865,
+      "cov_ci_corr": 0.95,
+      "cov_boot_L3": 0.887,
+      "cov_boot_L1": 0.933,
+      "cov_boot_L2": 0.915,
+      "bias_per_year": -0.00033908572945554955,
+      "rmse_per_year": 0.011237131870065434,
+      "verdicts": [
+        "rate_corr=0.051 PASS (window 0.035-0.065)",
+        "rate_plain=0.136 FAIL (window 0.035-0.065)",
+        "cov_ci_plain=0.865 FAIL (min 0.92)",
+        "cov_ci_corr=0.950 PASS (min 0.92)",
+        "cov_boot_L3=0.887 FAIL (min 0.92)",
+        "cov_boot_L1=0.933 PASS (min 0.92)",
+        "cov_boot_L2=0.915 FAIL (min 0.92)"
+      ]
+    },
+    "S2": {
+      "n_sims": 1000,
+      "true_slope_per_year": 0.0,
+      "rate_plain": 0.329,
+      "rate_corr": 0.087,
+      "cov_ci_plain": 0.671,
+      "cov_ci_corr": 0.914,
+      "bias_per_year": 0.001013217569925849,
+      "rmse_per_year": 0.01671284611567968,
+      "verdicts": [
+        "rate_corr=0.087 ANTI-CONSERVATIVE: state in Limitations",
+        "rate_plain=0.329 ANTI-CONSERVATIVE: state in Limitations"
+      ]
+    },
+    "S3": {
+      "n_sims": 1000,
+      "true_slope_per_year": 0.0,
+      "rate_plain": 0.396,
+      "rate_corr": 0.167,
+      "cov_ci_plain": 0.604,
+      "cov_ci_corr": 0.834,
+      "bias_per_year": 0.0006082778293740565,
+      "rmse_per_year": 0.0222792675365052,
+      "verdicts": [
+        "rate_corr=0.167 ANTI-CONSERVATIVE: state in Limitations",
+        "rate_plain=0.396 ANTI-CONSERVATIVE: state in Limitations"
+      ]
+    },
+    "S4": {
+      "n_sims": 1000,
+      "true_slope_per_year": 0.0,
+      "rate_plain": 0.057,
+      "rate_corr": null,
+      "cov_ci_plain": 0.943,
+      "cov_ci_corr": null,
+      "bias_per_year": 0.0004712615347439557,
+      "rmse_per_year": 0.009238012609281636,
+      "verdicts": [
+        "rate_plain=0.057"
+      ]
+    },
+    "T1": {
+      "n_sims": 1000,
+      "true_slope_per_year": 0.012,
+      "rate_plain": 0.358,
+      "rate_corr": 0.189,
+      "cov_ci_plain": 0.858,
+      "cov_ci_corr": 0.953,
+      "cov_boot_L3": 0.905,
+      "cov_boot_L1": 0.922,
+      "cov_boot_L2": 0.914,
+      "bias_per_year": 7.707895942079346e-05,
+      "rmse_per_year": 0.011104639353611634,
+      "verdicts": [
+        "cov_ci_plain=0.858 FAIL (min 0.92)",
+        "cov_ci_corr=0.953 PASS (min 0.92)",
+        "cov_boot_L3=0.905 FAIL (min 0.92)",
+        "cov_boot_L1=0.922 PASS (min 0.92)",
+        "cov_boot_L2=0.914 FAIL (min 0.92)",
+        "power corr=0.189 plain=0.358"
+      ]
+    },
+    "T2": {
+      "n_sims": 1000,
+      "true_slope_per_year": 0.022,
+      "rate_plain": 0.695,
+      "rate_corr": 0.484,
+      "cov_ci_plain": 0.875,
+      "cov_ci_corr": 0.956,
+      "cov_boot_L3": 0.914,
+      "cov_boot_L1": 0.927,
+      "cov_boot_L2": 0.923,
+      "bias_per_year": 3.006017847414277e-06,
+      "rmse_per_year": 0.01099223171638616,
+      "verdicts": [
+        "cov_ci_plain=0.875 FAIL (min 0.92)",
+        "cov_ci_corr=0.956 PASS (min 0.92)",
+        "cov_boot_L3=0.914 FAIL (min 0.92)",
+        "cov_boot_L1=0.927 PASS (min 0.92)",
+        "cov_boot_L2=0.923 PASS (min 0.92)",
+        "power corr=0.484 plain=0.695"
+      ]
+    },
+    "T3": {
+      "n_sims": 1000,
+      "true_slope_per_year": 0.035,
+      "rate_plain": 0.955,
+      "rate_corr": 0.861,
+      "cov_ci_plain": 0.839,
+      "cov_ci_corr": 0.973,
+      "cov_boot_L3": 0.895,
+      "cov_boot_L1": 0.931,
+      "cov_boot_L2": 0.92,
+      "bias_per_year": 0.0004375118442125515,
+      "rmse_per_year": 0.011308069305511695,
+      "verdicts": [
+        "cov_ci_plain=0.839 FAIL (min 0.92)",
+        "cov_ci_corr=0.973 PASS (min 0.92)",
+        "cov_boot_L3=0.895 FAIL (min 0.92)",
+        "cov_boot_L1=0.931 PASS (min 0.92)",
+        "cov_boot_L2=0.920 PASS (min 0.92)",
+        "power corr=0.861 plain=0.955"
+      ]
+    }
+  }
+}

@@ -1,0 +1,92 @@
+{
+  "t2m": {
+    "files": [
+      "data\\raw\\gistemp1200_GHCNv4_ERSSTv5.nc"
+    ],
+    "n_files": 1,
+    "sha256": "7b21e3f9a7293d858d9eaa9da4cfbecc1f0412ae4971043624c394f7a493b853",
+    "sha256_kind": "file",
+    "variable": "tempanomaly",
+    "units_in_file": "K",
+    "units_in_config": "\u00b0C",
+    "scale": 1,
+    "offset": 0,
+    "grid_lat_lon": [
+      90,
+      180
+    ],
+    "lat_range": [
+      -89.0,
+      89.0
+    ],
+    "lon_range": [
+      -179.0,
+      179.0
+    ],
+    "lat_step": 2.0,
+    "lon_step": 2.0,
+    "first_month": "1880-01",
+    "last_month": "2026-10",
+    "last_complete_year": 2025,
+    "months_with_no_data_at_all": [],
+    "min_monthly_global_valid_fraction": 0.6811111111111111,
+    "block_factor_for_cap": 1,
+    "file_attributes": {
+      "title": "GISTEMP Surface Temperature Analysis",
+      "institution": "NASA Goddard Institute for Space Studies",
+      "source": "http://data.giss.nasa.gov/gistemp/",
+      "Conventions": "CF-1.6",
+      "history": "Created 2026-11-10 08:55:39 by SBBX_to_nc 2.0 - ILAND=1200, IOCEAN=NCDC/ER5, Base: 1951-1980"
+    },
+    "variable_attributes": {
+      "long_name": "Surface temperature anomaly",
+      "units": "K",
+      "cell_methods": "time: mean"
+    }
+  },
+  "precip": {
+    "files": [
+      "data\\raw\\gpcp\\GPCPMON_L3_200101_V3.3.nc4",
+      "data\\raw\\gpcp\\GPCPMON_L3_200102_V3.3.nc4",
+      "data\\raw\\gpcp\\GPCPMON_L3_200103_V3.3.nc4",
+      "..."
+    ],
+    "n_files": 300,
+    "sha256": "2db7e7934ba0dec9339237a734c2bc268515c8d52acbddac495e9473de31c4a5",
+    "sha256_kind": "manifest of filenames+sizes",
+    "variable": "sat_gauge_precip",
+    "units_in_file": "mm/day",
+    "units_in_config": "mm/day",
+    "scale": 1,
+    "offset": 0,
+    "grid_lat_lon": [
+      360,
+      720
+    ],
+    "lat_range": [
+      -89.75,
+      89.75
+    ],
+    "lon_range": [
+      -179.75,
+      179.75
+    ],
+    "lat_step": 0.5,
+    "lon_step": 0.5,
+    "first_month": "2001-01",
+    "last_month": "2025-12",
+    "last_complete_year": 2025,
+    "months_with_no_data_at_all": [],
+    "min_monthly_global_valid_fraction": 0.9999922839506172,
+    "block_factor_for_cap": 4,
+    "file_attributes": {
+      "Conventions": "CF-1.5"
+    },
+    "variable_attributes": {
+      "units": "mm/day",
+      "long_name": "combined satellite-gauge precipitation",
+      "valid_range": "[  0. 100.]",
+      "cell_methods": "time: mean"
+    }
+  }
+}
